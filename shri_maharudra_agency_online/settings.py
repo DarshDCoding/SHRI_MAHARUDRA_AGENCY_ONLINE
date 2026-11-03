@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-sy(sz8=5-#3tj+)_2$xdo6sk$o7oo89-stow)@yc_2@yg6m!zg
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['shri-maharudra-agency-online.onrender.com', '127.0.0.1:8000', 'shrimaharudraagencyonline.vercel.app']
 
 
 # Application definition
