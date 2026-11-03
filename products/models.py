@@ -53,7 +53,7 @@ class Product(models.Model):
         return self.company.name
 
     def __str__(self):
-        return f"${self.pk} - {self.name}"
+        return f"{self.pk} - {self.name}"
 
 
 class ProductImages (models.Model):
@@ -66,6 +66,9 @@ class ProductImages (models.Model):
 
     def product_name(self):
         return self.product.name
+
+    def __str__(self):
+        return f"{self.pk} - {self.product_name()} -  {self.is_primary}"
 
     class Meta:
         verbose_name_plural = "Product Images"
