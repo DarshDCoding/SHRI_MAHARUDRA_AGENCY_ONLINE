@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-sy(sz8=5-#3tj+)_2$xdo6sk$o7oo89-stow)@yc_2@yg6m!zg
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['shri-maharudra-agency-online.onrender.com', '127.0.0.1:8000', 'shrimaharudraagencyonline.vercel.app']
+ALLOWED_HOSTS = ['shri-maharudra-agency-online.onrender.com', '127.0.0.1', 'shrimaharudraagencyonline.vercel.app']
 
 
 # Application definition
@@ -50,6 +50,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -133,7 +134,16 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 
+STATIC_ROOT = BASE_DIR / "staticfiles"
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
 

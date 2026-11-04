@@ -15,7 +15,7 @@ class Company(models.Model):
         return self.name
 
 class HSN(models.Model):
-    hsn_number = models.IntegerField(max_length=10, unique=True)
+    hsn_number = models.IntegerField(unique=True)
     sgst = models.DecimalField(max_digits=5, decimal_places=2, default=0, validators=[MinValueValidator(0)])
     cgst = models.DecimalField(max_digits=5, decimal_places=2, default=0, validators=[MinValueValidator(0)])
 
@@ -37,8 +37,8 @@ class Product(models.Model):
     name = models.CharField(max_length=30)
     packing = models.CharField(max_length=10, null=True)
     mrp = models.DecimalField(max_digits=5, decimal_places=2)
-    company = models.ForeignKey(Company, on_delete=models.SET_NULL, null=True, blank=True, related_name="Product")
-    hsn = models.ForeignKey(HSN, on_delete=models.SET_NULL, null=True, blank=True, related_name="Product")
+    company = models.ForeignKey(Company, on_delete=models.SET_NULL, null=True, blank=True, related_name="ProductCompany")
+    hsn = models.ForeignKey(HSN, on_delete=models.SET_NULL, null=True, blank=True, related_name="ProductHSN")
     selling_discount_percentage = models.DecimalField(max_digits=5, decimal_places=2, default=0, validators=[MinValueValidator(0), MaxValueValidator(100)])
     selling_scheme_percentage = models.DecimalField(max_digits=5, decimal_places=2, default=0, validators=[MinValueValidator(0), MaxValueValidator(100)])
     description = models.TextField(blank=True)

@@ -1,0 +1,1 @@
+gunicorn shri_maharudra_agency_online.wsgi
